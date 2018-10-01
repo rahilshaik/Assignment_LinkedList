@@ -363,7 +363,7 @@ namespace Assignment_2
         public decimal Value()
         {
             decimal value = 0.0m;
-            //Head is set as the current Node
+            //Head is set as the current node
             StockNode currentNode = this.head;
             while (currentNode != null)
             {
