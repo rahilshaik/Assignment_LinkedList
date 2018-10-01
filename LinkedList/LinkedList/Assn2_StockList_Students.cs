@@ -314,8 +314,21 @@ namespace Assignment_2
         //return type  : Stock
         public Stock MostShares()
         {
+            //Head is set as the current Node
             Stock mostShareStock = null;
-            
+            StockNode currentNode = this.head;
+            while (currentNode != null && currentNode.Next != null)
+            {
+                //Checking if the current stock holdings are greater than the next stock holdings
+                if (currentNode.StockHolding.Holdings > currentNode.Next.StockHolding.Holdings)
+                {
+                    //Assigning the most share stock as current stock if it is greater than next holding
+                    mostShareStock = currentNode.StockHolding;
+                }
+
+                currentNode = currentNode.Next;
+            }
+
             return mostShareStock;
         }
 
@@ -328,6 +341,17 @@ namespace Assignment_2
         {
             int length = 0;
 
+            //Head is set as the current Node
+            StockNode currentNode = this.head;
+
+            //Checking if the current node has any value
+            while (currentNode != null)
+            {
+                //Incrementing length by 1 until last term
+                length++;
+                currentNode = currentNode.Next;
+            }
+
             return length;
         }
 
@@ -339,7 +363,15 @@ namespace Assignment_2
         public decimal Value()
         {
             decimal value = 0.0m;
-           
+            //Head is set as the current Node
+            StockNode currentNode = this.head;
+            while (currentNode != null)
+            {
+                //Multiplying Holdings with Current price and adding them
+                value += currentNode.StockHolding.Holdings * currentNode.StockHolding.CurrentPrice;
+                currentNode = currentNode.Next;
+            }
+
             return value;
         }
 
@@ -376,7 +408,17 @@ namespace Assignment_2
         //return type  : NA
         public void Print()
         {
-            
+            //Head is set as the current Node
+            StockNode currentNode = this.head;
+            //checking if the node has any value
+            while (currentNode != null)
+            {
+                Console.WriteLine(currentNode.StockHolding.ToString());
+                //Assigning next node to current node
+                currentNode = currentNode.Next;
+            }
+
         }
+
     }
 }
